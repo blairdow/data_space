@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026014338) do
+ActiveRecord::Schema.define(version: 20161026041114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "missions", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",           null: false
     t.date     "starts_on"
     t.date     "ends_on"
     t.text     "description"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20161026014338) do
   end
 
   create_table "nations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "country_code"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "name",                   null: false
+    t.string   "country_code", limit: 2, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "nations_space_agencies", id: false, force: :cascade do |t|
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20161026014338) do
   end
 
   create_table "programs", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                            null: false
     t.boolean  "is_active",       default: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20161026014338) do
   end
 
   create_table "space_agencies", force: :cascade do |t|
-    t.string   "abbreviation"
-    t.string   "name"
-    t.string   "english_name"
+    t.string   "abbreviation",             null: false
+    t.string   "name",                     null: false
+    t.string   "english_name",             null: false
     t.integer  "budget",       default: 0
     t.date     "founded_on"
     t.datetime "created_at",               null: false
@@ -63,15 +63,15 @@ ActiveRecord::Schema.define(version: 20161026014338) do
   end
 
   create_table "space_crafts", force: :cascade do |t|
-    t.string   "name"
-    t.string   "build"
-    t.integer  "payload_capacity"
+    t.string   "name",             null: false
+    t.string   "build",            null: false
+    t.integer  "payload_capacity", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   create_table "space_travelers", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       null: false
     t.string   "sex"
     t.date     "born_on"
     t.date     "died_on"

@@ -1,6 +1,5 @@
 class Nation < ActiveRecord::Base
-    validates :name, presence: true
-    validates :country_code, presence: true
+    validates :name, :country_code, presence: true
     validates :country_code, uniqueness: { case_sensitive: false }
     validates :country_code, length: { maximum: 2 }
     

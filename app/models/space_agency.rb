@@ -8,4 +8,14 @@ class SpaceAgency < ActiveRecord::Base
     has_and_belongs_to_many :nations
     has_many :missions, through: :programs
     has_many :space_travelers, through: :missions
+    
+    after_initialize :default_values
+    
+    private
+        def default_values
+            self.budget ||= 0
+#            if self.name.nil?
+#               raise 'name must be set'
+#            end
+        end
 end
